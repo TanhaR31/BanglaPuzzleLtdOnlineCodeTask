@@ -22,10 +22,16 @@
                     
                     @endif
                 </div>
-                    @if(!Session::has('seller'))
-
+                @if(!Session::has('blogger'))
+                    <div class="navbar-nav ms-auto">
+                        <a href="{{route('login')}}" class="nav-item nav-link">Login</a>
+                    </div>
                     @else
-
+                    <div class="navbar-nav ms-auto">
+                        <p></p>
+                        <a href="" class="nav-item nav-link">{{Session::get('bloggername')}}</a>
+                        <a href="{{route('logout')}}" class="btn btn-danger">Logout</a>
+                    </div>
                     @endif
             </div>
         </div>

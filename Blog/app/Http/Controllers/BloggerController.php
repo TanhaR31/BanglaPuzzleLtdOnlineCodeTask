@@ -84,6 +84,11 @@ class BloggerController extends Controller
         //
     }
 
+    //Middleware
+    public function __construct(){
+        $this->middleware('validBlogger');
+    }
+
     //Blogger Dashboard
     public function dashboard()
     {
