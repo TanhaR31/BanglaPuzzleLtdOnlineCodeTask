@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     body {
-        font-family: "Lato", sans-serif;
+        font-family: "Poppins", sans-serif;
     }
 
     .sidenav {
@@ -22,7 +22,7 @@
     }
 
     .sidenav a {
-        padding: 8px 8px 8px 32px;
+        padding: 8px 8px 8px 0px;
         text-decoration: none;
         font-size: 25px;
         color: #818181;

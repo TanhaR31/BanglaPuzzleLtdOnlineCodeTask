@@ -44,6 +44,24 @@
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </div>
                 </div>
+
+                <!-- @foreach($blogs as $blog)
+                <div class="carousel-item active">
+                    <img src="{{asset('images/'.$blog->image)}}" class="d-block w-100" alt="Sunset Over the City" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{asset('images/'.$blog->image)}}" class="d-block w-100" alt="Sunset Over the City" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </div>
+                </div>
+                @endforeach -->
+
             </div>
             <!-- Inner -->
 
