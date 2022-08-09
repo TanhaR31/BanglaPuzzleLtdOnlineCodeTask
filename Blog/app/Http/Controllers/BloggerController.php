@@ -83,4 +83,12 @@ class BloggerController extends Controller
     {
         //
     }
+
+    //Blogger Dashboard
+    public function dashboard()
+    {
+        $id = session()->get('blogger');
+        $blogger = Blogger::where('id', $id)->first();
+        return view('pages.dashboard')->with('blogger', $blogger);
+    }
 }

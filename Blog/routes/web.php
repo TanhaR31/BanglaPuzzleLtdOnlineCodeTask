@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BloggerController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,7 @@ Route::post('/registration', [RegistrationController::class, 'registrationSubmit
 Route::get('/login',[LoginController::class,'login'])->name('login');
 Route::post('/login',[LoginController::class,'loginSubmit'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+//Blogger Dashboard
+// Route::get('/dashboard', [BloggerController::class,'dashboard'])->middleware('ValidBlogger')->name('dashboard');
+Route::get('/dashboard', [BloggerController::class,'dashboard'])->name('dashboard');
