@@ -1,5 +1,5 @@
 <?php
-echo "Task_1<br/><br/>";
+echo "Problem Solving 1<br/><br/>";
 function Staircase($N)
 {
     for ($i = 1; $i <=$N ; $i++)
