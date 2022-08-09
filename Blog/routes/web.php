@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BloggerController;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+//Index
+Route::get('/index', [BloggerController::class, 'index'])->name('index');
+
+//New Blogger Registration
+Route::get('/registration', [RegistrationController::class, 'registration'])->name('registration');
+Route::post('/registration', [RegistrationController::class, 'registrationSubmitted'])->name('registration');
+
+//Login & Logout
+Route::get('/login',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'loginSubmit'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
