@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.nonav')
 @section('content')
 <section class="ftco-section">
     <div class="container">

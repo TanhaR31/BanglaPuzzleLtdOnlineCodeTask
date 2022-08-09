@@ -15,30 +15,34 @@
                     <div class="container">
                         <div class="row ">
                             <div class="form-group">
-                                <img src="{{asset('images/'.$blogger->b_image)}}" alt="Blogger Profile Picture" width="500" height="500">
+                                <img src="{{asset('images/'.$blogger->b_image)}}" alt="Blogger Profile Picture"
+                                    width="500" height="500">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control rounded-left" name="b_name" value="Name : {{$blogger->b_name}}" placeholder="Name" readonly>
+                                <input type="text" class="form-control rounded-left" name="b_name"
+                                    value="Name : {{$blogger->b_name}}" placeholder="Name" readonly>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control rounded-left" name="b_phone" value="Phone Number : {{$blogger->b_phone}}" placeholder="Phone" readonly>
+                                <input type="text" class="form-control rounded-left" name="b_phone"
+                                    value="Phone Number : 0{{$blogger->b_phone}}" placeholder="Phone" readonly>
                             </div>
 
                             <div class="form-group">
-                                <input type="email" class="form-control rounded-left" name="b_email" value="Email Address : {{$blogger->b_email}}" placeholder="Email" readonly>
+                                <input type="email" class="form-control rounded-left" name="b_email"
+                                    value="Email Address : {{$blogger->b_email}}" placeholder="Email" readonly>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control rounded-left" name="b_address" value="Address : {{$blogger->b_address}}" placeholder="Address" readonly>
+                                <input type="text" class="form-control rounded-left" name="b_address"
+                                    value="Address : {{$blogger->b_address}}" placeholder="Address" readonly>
                             </div>
-
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
-
     </div>
-    </div>
-    @endsection
+</section>
+@endsection
