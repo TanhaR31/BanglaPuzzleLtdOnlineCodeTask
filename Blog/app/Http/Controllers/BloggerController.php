@@ -15,7 +15,7 @@ class BloggerController extends Controller
      */
     public function index()
     {
-        return view('index');
+        // return view('index');
     }
 
     /**
@@ -85,7 +85,8 @@ class BloggerController extends Controller
     }
 
     //Middleware
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('validBlogger');
     }
 

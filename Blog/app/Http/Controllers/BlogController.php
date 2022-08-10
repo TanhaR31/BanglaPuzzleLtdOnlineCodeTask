@@ -84,13 +84,4 @@ class BlogController extends Controller
     {
         //
     }
-
-    //Blogger Dashboard
-    public function allBlog()
-    {
-        $blogs = DB::table('blogs')->get();
-        // $nblogs= Blog::where('b_email', $req->email)
-        return view('pages.allBlog')->with('blogs', $blogs);
-        // return $blogs;
-    }
 }

@@ -58,10 +58,7 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a href="{{route('index')}}">Index</a>
         @if(!Session::has('blogger'))
         <div class="navbar-nav ms-auto">
             <a href="{{route('login')}}" class="nav-item nav-link">Login</a>

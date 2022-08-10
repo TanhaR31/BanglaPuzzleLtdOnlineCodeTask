@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BloggerController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
 
 /*
@@ -17,10 +18,7 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-Route::get('/', [BlogController::class, 'allBlog']);
-
-//Index
-Route::get('/index', [BloggerController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 //New Blogger Registration
 Route::get('/registration', [RegistrationController::class, 'registration'])->name('registration');
@@ -35,4 +33,4 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [BloggerController::class, 'dashboard'])->middleware('validBlogger')->name('dashboard');
 
 //Blog Dashboard
-Route::get('/allBlog', [BlogController::class, 'allBlog'])->name('allBlog');
+// Route::get('/allBlog', [BlogController::class, 'allBlog'])->name('allBlog');
