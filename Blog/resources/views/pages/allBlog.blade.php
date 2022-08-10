@@ -43,6 +43,8 @@
         <div class="container">
             <div class="text-center my-5">
                 <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+                <button type="submit" class="">
+                    <a href="/blogCreate">Post Something →</a></button>
             </div>
         </div>
     </header>

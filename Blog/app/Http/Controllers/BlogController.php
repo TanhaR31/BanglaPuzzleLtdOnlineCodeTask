@@ -157,9 +157,10 @@ class BlogController extends Controller
     public function blogDelete(Request $request)
     {
         $blog = Blog::where('id', $request->id)->first();
-        $comment = BlogComment::where('blog_id', $blog->id)->get();
-        // return $comment;
+        // $comment = BlogComment::where('blog_id', $blog->id)->get();
+        // // return $comment;
         // $comment->delete();
+        BlogComment::where('blog_id', $blog->id)->delete();
         $blog->delete();
 
         return redirect()->route('allBlog');
