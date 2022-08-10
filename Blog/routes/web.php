@@ -6,6 +6,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogCommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,14 +34,18 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [BloggerController::class, 'dashboard'])->middleware('validBlogger')->name('dashboard');
 
 // Blog Dashboard
-Route::get('/allBlog', [BlogController::class, 'allBlog'])->name('allBlog');
-Route::get('/blogDetails', [BlogController::class, 'blogDetails'])->name('blogDetails');
+Route::get('/allBlog', [BlogController::class, 'allBlog'])->middleware('validBlogger')->name('allBlog');
+Route::get('/blogDetails', [BlogController::class, 'blogDetails'])->middleware('validBlogger')->name('blogDetails');
 
 //New Blog Creation
-Route::get('/blogCreate', [BlogController::class, 'blogCreate'])->name('blogCreate');
-Route::post('/blogCreate', [BlogController::class, 'blogCreateSubmitted'])->name('blogCreate');
+Route::get('/blogCreate', [BlogController::class, 'blogCreate'])->middleware('validBlogger')->name('blogCreate');
+Route::post('/blogCreate', [BlogController::class, 'blogCreateSubmitted'])->middleware('validBlogger')->name('blogCreate');
 
-//Seller Product Edit & Delete
-Route::get('/blogEdit/{id}/{slug}', [BlogController::class, 'blogEdit']);
-Route::post('/blogEditSubmitted', [BlogController::class, 'blogEditSubmitted'])->name('blogEdit');
-Route::get('/blogDelete/{id}/{slug}', [BlogController::class, 'blogDelete']);
+//Blog Edit & Delete
+Route::get('/blogEdit/{id}/{slug}', [BlogController::class, 'blogEdit'])->middleware('validBlogger');
+Route::post('/blogEditSubmitted', [BlogController::class, 'blogEditSubmitted'])->middleware('validBlogger')->name('blogEdit');
+Route::get('/blogDelete/{id}/{slug}', [BlogController::class, 'blogDelete'])->middleware('validBlogger');
+
+//Blog Comment
+Route::get('/blogComment/{id}', [BlogCommentController::class, 'blogComment'])->middleware('validBlogger')->name('blogComment');
+Route::post('/blogCommentSubmitted', [BlogCommentController::class, 'blogCommentSubmitted'])->middleware('validBlogger')->name('blogComment');

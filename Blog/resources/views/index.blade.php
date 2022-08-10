@@ -308,7 +308,7 @@ span.psw {
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close"
                     title="Close Modal">&times;</span>
-                <img src="{{asset('images/login-avatar.png')}}" alt="Avatar" class="avatar">
+                <img src="{{asset('images/log.png')}}" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
@@ -369,6 +369,7 @@ span.psw {
         <button type="submit" class="btn btn-light rounded submit p-3">
             <a href="{{route('dashboard')}}">Dashboard</a></button>
     </div>
+    @endif
     <!-- SWIPER START -->
     <div class="container">
         @foreach($blogs as $blog)
@@ -376,8 +377,14 @@ span.psw {
             <div class="numbertext"><span>{{$blog->title}}</span></div>
             <img src="{{asset('images/'.$blog->image)}}" class="image">
             <div class="overlay">
-                <div class="text">{{$blog->description}}</div>
+                <div class="text">{{$blog->description}}
+                    @if(Session::has('blogger'))
+                    <button type="submit" class=""><a href="/blogComment/{{$blog->id}}">Comment On This Post
+                            →</a></button>
+                    @endif
+                </div>
             </div>
+
         </div>
         @endforeach
 
@@ -423,7 +430,6 @@ span.psw {
 
     <!-- <button type="submit"><a href="{{route('login')}}">Click Here To Login</a>
     </button> -->
-    @endif
 </body>
 <!-- <table class="table table-bordered">
     <tr>

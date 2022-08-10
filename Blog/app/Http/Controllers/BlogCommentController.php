@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogComment;
+use App\Models\Blog;
 use App\Http\Requests\StoreBlogCommentRequest;
 use App\Http\Requests\UpdateBlogCommentRequest;
+use App\Models\Blogger;
+use Illuminate\Http\Request;
+
 
 class BlogCommentController extends Controller
 {
@@ -82,5 +86,37 @@ class BlogCommentController extends Controller
     public function destroy(BlogComment $blogComment)
     {
         //
+    }
+
+    //Middleware
+    public function __construct()
+    {
+        $this->middleware('validBlogger');
+    }
+
+    //Blog Comment
+    public function blogComment(Request $request)
+    {
+        //return $request;
+        $blog = Blog::where('id', $request->id)->first();
+        $blogger = Blogger::where('id', $blog->blogger_id)->first();
+        $oldBlogComments = BlogComment::where('blog_id', $request->id)->get();
+        $id = session()->get('blogger');
+        $me = Blogger::where('id', $id)->first();
+        // return view('pages.blogDetails')->with('blog', $blog);
+        return view('pages.blogDetails', compact('blog', 'blogger', 'me', 'oldBlogComments'));
+        // return $me;
+    }
+
+    public function blogCommentSubmitted(Request $request)
+    {
+        // return $request;
+        $blogComment = new BlogComment();
+        $blogComment->blog_id = $request->blog_id;
+        $blogComment->blogger_id = $request->blogger_id;
+        $blogComment->comment = $request->comment;
+        $blogComment->save();
+
+        return redirect()->back();
     }
 }

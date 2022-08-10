@@ -66,7 +66,7 @@
                                 <h2 class="card-title h4">Title : {{$blog->title}}</h2>
                                 <p class="card-text">{{$blog->description}}</p>
                                 <button type="submit" class="">
-                                    <a href="/blogDetails/{{$blog->id}}/{{$blog->slug}}">Details →</a></button>
+                                    <a href="/blogComment/{{$blog->id}}">Details →</a></button>
                                 <button type="submit" class="">
                                     <a href="/blogEdit/{{$blog->id}}/{{$blog->slug}}">Edit →</a></button>
                                 <button type="submit" class="">

@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +16,30 @@
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+    button {
+        background-color: darkorchid;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: black;
+    }
+
     .content-item {
         padding: 30px 0;
         background-color: #ffffff;
@@ -145,7 +171,7 @@
         <div class="text-center my-5">
             <h1 class="fw-bolder">Welcome to Blog Home!</h1>
             <p class="lead mb-0">
-                A Bootstrap 5 starter layout for your next blog homepage
+                Comment Anything
             </p>
         </div>
     </div>
@@ -158,31 +184,25 @@
                 <div class="col-lg-8 m-15px-tb">
                     <article class="article">
                         <div class="article-img">
-                            <img src="https://via.placeholder.com/800x350/87CEFA/000000" title="" alt="" />
+                            <img src="{{asset('images/'.$blog->image)}}" title="" alt="" />
                         </div>
                         <div class="article-title">
-                            <h6><a href="#">Lifestyle</a></h6>
-                            <h2>They Now Bade Farewell To The Kind But Unseen People</h2>
+                            <h6>Blog ID : {{$blog->id}}</h6>
+                            <h2>Blog Title : {{$blog->title}}</h2>
                             <div class="media">
                                 <div class="avatar">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" title="" alt="" />
+                                    <img src="{{asset('images/'.$blogger->b_image)}}" title="" alt="" />
                                 </div>
                                 <div class="media-body">
-                                    <label>Rachel Roth</label>
-                                    <span>26 FEB 2020</span>
+                                    <label>{{$blogger->b_name}}</label>
+                                    <span>10 AUG 2022</span>
                                 </div>
                             </div>
                         </div>
                         <div class="article-content">
+                            <p>{{$blog->description}}</p>
                             <p>
-                                Aenean eleifend ante maecenas pulvinar montes lorem et pede
-                                dis dolor pretium donec dictum. Vici consequat justo enim.
-                                Venenatis eget adipiscing luctus lorem. Adipiscing veni amet
-                                luctus enim sem libero tellus viverra venenatis aliquam.
-                                Commodo natoque quam pulvinar elit.
-                            </p>
-                            <p>
-                                Eget aenean tellus venenatis. Donec odio tempus. Felis arcu
+                                <!-- Eget aenean tellus venenatis. Donec odio tempus. Felis arcu
                                 pretium metus nullam quam aenean sociis quis sem neque vici
                                 libero. Venenatis nullam fringilla pretium magnis aliquam nunc
                                 vulputate integer augue ultricies cras. Eget viverra feugiat
@@ -216,7 +236,7 @@
                                 dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                                 cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.
-                            </p>
+                            </p> -->
                         </div>
                         <div class="nav tag-cloud">
                             <a href="#">Design</a>
@@ -233,74 +253,58 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <form>
-                                            <h3 class="pull-left">New Comment</h3>
+                                        <form action="{{route('blogComment')}}" method="post">
+                                            @csrf
+                                            <!-- {{ csrf_field() }} -->
+                                            <h3 class="pull-left">New Comment By {{ session()->get('bloggername') }}
+                                            </h3>
 
                                             <fieldset>
                                                 <div class="row">
                                                     <div class="col-sm-3 col-lg-2 hidden-xs">
                                                         <img class="img-responsive"
-                                                            src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                                            alt="" />
+                                                            src="{{asset('images/'.$me->b_image)}}"
+                                                            alt="{{$me->b_name}}" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control rounded-left"
+                                                            name="blog_id" value="{{$blog->id}}" placeholder="Blog ID"
+                                                            hidden>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control rounded-left"
+                                                            name="blogger_id" value="{{ session()->get('blogger') }}"
+                                                            placeholder="Blogger ID" hidden>
                                                     </div>
                                                     <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                                                        <textarea class="form-control" id="message"
-                                                            placeholder="Your message" required=""></textarea>
+                                                        <textarea class="form-control" id="comment" name="comment"
+                                                            placeholder="Your Comment" required></textarea>
                                                     </div>
                                                 </div>
                                             </fieldset>
-                                            <button type="submit" class="btn btn-normal float-end" style="float: right">
-                                                Submit
+                                            <button type="submit" class="" style="float: right">
+                                                Comment
                                             </button>
                                         </form>
 
-                                        <h3>4 Comments</h3>
+                                        <h3>Previous Comments</h3>
 
                                         <!-- COMMENT 1 - START -->
+                                        @foreach($oldBlogComments as $old)
                                         <div class="media">
                                             <a class="pull-left" href="#"><img class="media-object"
-                                                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                                    alt="" /></a>
+                                                    src="{{asset('images/log.png')}}" alt="" /></a>
                                             <div class="media-body">
-                                                <h4 class="media-heading">John Doe</h4>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                    elit. Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Lorem ipsum dolor sit amet,
-                                                    consectetur adipiscing elit. Lorem ipsum dolor sit
-                                                    amet, consectetur adipiscing elit. Lorem ipsum dolor
-                                                    sit amet, consectetur adipiscing elit. Lorem ipsum
-                                                    dolor sit amet, consectetur adipiscing elit.
-                                                </p>
+                                                <h4 class="media-heading">Blogger ID : {{$old->blogger_id}}</h4>
+                                                <p>{{$old->comment}}</p>
                                                 <ul class="list-unstyled list-inline media-detail pull-left">
-                                                    <li><i class="fa fa-calendar"></i>27/02/2014</li>
+                                                    <li><i class="fa fa-calendar"></i>10/08/2022</li>
                                                 </ul>
                                             </div>
                                         </div>
+                                        @endforeach
                                         <!-- COMMENT 1 - END -->
-
-                                        <!-- COMMENT 2 - START -->
-                                        <div class="media">
-                                            <a class="pull-left" href="#"><img class="media-object"
-                                                    src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                                    alt="" /></a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">John Doe</h4>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                    elit. Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Lorem ipsum dolor sit amet,
-                                                    consectetur adipiscing elit. Lorem ipsum dolor sit
-                                                    amet, consectetur adipiscing elit. Lorem ipsum dolor
-                                                    sit amet, consectetur adipiscing elit. Lorem ipsum
-                                                    dolor sit amet, consectetur adipiscing elit.
-                                                </p>
-                                                <ul class="list-unstyled list-inline media-detail pull-left">
-                                                    <li><i class="fa fa-calendar"></i>27/02/2014</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- COMMENT 2 - END -->
                                     </div>
                                 </div>
                             </div>
@@ -316,12 +320,12 @@
                         <div class="widget-body">
                             <div class="media align-items-center">
                                 <div class="avatar">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" title="" alt="" />
+                                    <img src="{{asset('images/'.$blogger->b_image)}}" title="" alt="" />
                                 </div>
                                 <div class="media-body">
                                     <h6>
                                         Hello, I'm<br />
-                                        Rachel Roth
+                                        {{$blogger->b_name}}
                                     </h6>
                                 </div>
                             </div>
@@ -436,6 +440,7 @@
         padding-top: 30px;
         padding-bottom: 30px;
     }
+
 
     .gray-bg {
         background-color: #f5f5f5;
@@ -903,3 +908,4 @@
 </body>
 
 </html>
+@endsection

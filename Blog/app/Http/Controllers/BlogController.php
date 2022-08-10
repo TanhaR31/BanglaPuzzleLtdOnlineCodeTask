@@ -87,6 +87,12 @@ class BlogController extends Controller
         //
     }
 
+    //Middleware
+    public function __construct()
+    {
+        $this->middleware('validBlogger');
+    }
+
     public function allBlog()
     {
         $id = session()->get('blogger');
