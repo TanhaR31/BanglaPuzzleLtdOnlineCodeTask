@@ -17,9 +17,7 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [BlogController::class, 'allBlog']);
 
 //Index
 Route::get('/index', [BloggerController::class, 'index'])->name('index');
@@ -29,12 +27,12 @@ Route::get('/registration', [RegistrationController::class, 'registration'])->na
 Route::post('/registration', [RegistrationController::class, 'registrationSubmitted'])->name('registration');
 
 //Login & Logout
-Route::get('/login',[LoginController::class,'login'])->name('login');
-Route::post('/login',[LoginController::class,'loginSubmit'])->name('login');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'loginSubmit'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Blogger Dashboard
-Route::get('/dashboard', [BloggerController::class,'dashboard'])->middleware('validBlogger')->name('dashboard');
+Route::get('/dashboard', [BloggerController::class, 'dashboard'])->middleware('validBlogger')->name('dashboard');
 
 //Blog Dashboard
-Route::get('/allBlog', [BlogController::class,'allBlog'])->name('allBlog');
+Route::get('/allBlog', [BlogController::class, 'allBlog'])->name('allBlog');
