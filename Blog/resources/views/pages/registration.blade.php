@@ -22,7 +22,7 @@
     }
 
     button {
-        background-color: #04AA6D;
+        background-color: darkorchid;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;
@@ -150,8 +150,8 @@
                         Registration</button>
                 </div>
                 <div class="form-group">
-                    <button type="submit" style="background-color: darkcyan;">
-                        <a href="{{route('login')}}">Already Registered? Click here</a></button>
+                    <button type="submit">
+                        <a href=" {{route('login')}}">Already Registered? Click here</a></button>
                 </div>
             </div>
         </div>

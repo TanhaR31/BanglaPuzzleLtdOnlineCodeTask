@@ -134,8 +134,20 @@ img {
     opacity: 1;
 }
 
+/* Full-width input fields */
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
 button {
-    background-color: #04AA6D;
+    background-color: darkmagenta;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -151,32 +163,6 @@ button:hover {
 a {
     text-decoration: none;
     color: white;
-}
-
-/* Full-width input fields */
-input[type=text],
-input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-button {
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    opacity: 0.8;
 }
 
 /* Extra styles for the cancel button */
@@ -300,7 +286,7 @@ span.psw {
     @if(!Session::has('blogger'))
     <!-- LOGIN MODAL START -->
 
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login Modal</button>
 
     <div id="id01" class="modal">
 

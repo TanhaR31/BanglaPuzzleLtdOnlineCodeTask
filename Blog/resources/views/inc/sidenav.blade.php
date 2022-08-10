@@ -8,6 +8,25 @@
         font-family: "Poppins", sans-serif;
     }
 
+    button {
+        background-color: darkmagenta;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
     .sidenav {
         height: 100%;
         width: 0;
@@ -67,7 +86,10 @@
         <div class="navbar-nav ms-auto">
             <a href="{{route('allBlog')}}" class="nav-item nav-link">My Blogs</a>
             <a href="{{route('dashboard')}}" class="nav-item nav-link">{{Session::get('bloggername')}}</a>
-            <a href=" {{route('logout')}}" class="btn btn-danger">Logout</a>
+            <div class="">
+                <button type="submit" class="">
+                    <a href="{{route('logout')}}">LogOut</a></button>
+            </div>
         </div>
         @endif
     </div>
