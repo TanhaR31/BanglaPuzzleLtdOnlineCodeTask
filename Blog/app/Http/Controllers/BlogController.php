@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\BlogComment;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -83,5 +85,83 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+    }
+
+    public function allBlog()
+    {
+        $id = session()->get('blogger');
+        $blogs = Blog::where('blogger_id', $id)->get();
+        return view('pages.allBlog')->with('blogs', $blogs);
+    }
+
+    public function blogDetails()
+    {
+        return view('pages.blogDetails');
+    }
+
+    //New Blog Post
+    public function blogCreate()
+    {
+        return view('pages.blogCreate');
+    }
+    public function blogCreateSubmitted(Request $request)
+    {
+        // return $request;
+        $blog = new Blog();
+        $blog->blogger_id = $request->blogger_id;
+        $blog->title = $request->title;
+        $blog->slug = $request->slug;
+        $blog->description = $request->description;
+        $imageName = time() . "_" . $request->file('image')->getClientOriginalName();
+        $request->image->move(public_path('images'), $imageName);
+        $blog->image = $imageName;
+        $blog->save();
+
+        return redirect(route('allBlog'));
+    }
+
+    //Blog Edit
+    public function blogEdit(Request $request)
+    {
+        //return $request;
+        $blog = Blog::where('id', $request->id)->first();
+        return view('pages.blogEdit')->with('blog', $blog);
+    }
+
+    public function blogEditSubmitted(Request $request)
+    {
+        //return $request;
+        $blog = Blog::where('id', $request->id)->first();
+        $blog->id = $blog->id;
+        $blog->blogger_id = $blog->blogger_id;
+        $blog->title = $request->title;
+        $blog->slug = $request->slug;
+        $blog->description = $request->description;
+
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . "_" . $request->file('image')->getClientOriginalName();
+            $request->image->move(public_path('images'), $imageName);
+            $blog->image = $imageName;
+            $blog->save();
+        } else {
+
+            $blog->image = $blog->image;
+        }
+        $blog->save();
+
+        return redirect(route('allBlog'));
+    }
+
+    // Blog Delete
+    public function blogDelete(Request $request)
+    {
+        $blog = Blog::where('id', $request->id)->first();
+        $comment = BlogComment::where('blog_id', $blog->id)->get();
+        // return $comment;
+        // $comment->delete();
+        $blog->delete();
+
+        return redirect()->route('allBlog');
     }
 }

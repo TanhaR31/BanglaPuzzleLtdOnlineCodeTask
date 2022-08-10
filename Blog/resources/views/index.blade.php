@@ -45,7 +45,7 @@ img {
 }
 
 .container:hover .overlay {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .text {
@@ -96,8 +96,9 @@ img {
 
 /* Number text (1/3 etc) */
 .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
+    font-weight: 700;
+    color: black;
+    font-size: 20px;
     padding: 8px 12px;
     position: absolute;
     top: 0;
@@ -261,8 +262,6 @@ span.psw {
     animation: animatezoom 0.6s
 }
 
-
-
 @-webkit-keyframes animatezoom {
     from {
         -webkit-transform: scale(0)
@@ -297,9 +296,10 @@ span.psw {
 </style>
 
 <body>
-
-    <!-- LOGIN MODAL START -->
     <h2 style="text-align:center">Bangla Puzzle Blogs</h2>
+    @if(!Session::has('blogger'))
+    <!-- LOGIN MODAL START -->
+
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
     <div id="id01" class="modal">
@@ -364,7 +364,11 @@ span.psw {
     }
     </script>
     <!-- LOGIN MODAL END -->
-
+    @else
+    <div class="">
+        <button type="submit" class="btn btn-light rounded submit p-3">
+            <a href="{{route('dashboard')}}">Dashboard</a></button>
+    </div>
     <!-- SWIPER START -->
     <div class="container">
         @foreach($blogs as $blog)
@@ -419,6 +423,7 @@ span.psw {
 
     <!-- <button type="submit"><a href="{{route('login')}}">Click Here To Login</a>
     </button> -->
+    @endif
 </body>
 <!-- <table class="table table-bordered">
     <tr>

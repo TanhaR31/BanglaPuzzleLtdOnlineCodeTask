@@ -11,10 +11,11 @@
     }
 
     input[type=text],
-    input[type=password] {
+    input[type=password],
+    input[type=email] {
         width: 100%;
         padding: 12px 20px;
-        /* margin: 8px 0; */
+        margin: 8px 0;
         display: inline-block;
         border: 1px solid #ccc;
         box-sizing: border-box;
@@ -30,23 +31,27 @@
         width: 100%;
     }
 
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
     button:hover {
         opacity: 0.8;
     }
 
     .imgcontainer {
         text-align: center;
-        margin: 12px 0 0 0;
+        margin: 24px 0 12px 0;
     }
 
     img.avatar {
-        width: 30%;
-        height: 70%;
+        width: 20%;
         border-radius: 50%;
     }
 
     .container {
-        padding: 30px;
+        padding: 16px;
     }
 
     span.psw {
@@ -65,47 +70,45 @@
 </head>
 
 <body>
+    <h2 style="text-align: center;">Post A Blog</h2>
 
-    <h3 style="text-align: center;">
-        Blogger Id : @if(Session::get('blogger')) {{Session::get('blogger')}}@endif
-    </h3>
-
-    <form action="" method="">
+    <form action="{{route('blogCreate')}}" method="post" enctype="multipart/form-data">
         <!-- {{csrf_field()}} -->
         @csrf
         <div class="container">
             <div class="row ">
-                <div class="imgcontainer">
-                    <img src="{{asset('images/'.$blogger->b_image)}}" alt="Blogger Profile Picture" class="avatar">
-                </div>
-                <!-- <div class="form-group">
-                    <img src="{{asset('images/'.$blogger->b_image)}}" alt="Blogger Profile Picture" width="500"
-                        height="500">
-                </div> -->
-
                 <div class="form-group">
-                    <input type="text" class="form-control rounded-left" name="b_name"
-                        value="Name : {{$blogger->b_name}}" placeholder="Name" readonly>
+                    <br>Blogger ID<input type="text" class="form-control rounded-left" name="blogger_id"
+                        value="{{Session::get('blogger')}}" placeholder="Blogger ID" readonly>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control rounded-left" name="b_phone"
-                        value="Phone Number : 0{{$blogger->b_phone}}" placeholder="Phone" readonly>
+                    <input type="text" class="form-control rounded-left" name="title" placeholder="Blog Title" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="email" class="form-control rounded-left" name="b_email"
-                        value="Email Address : {{$blogger->b_email}}" placeholder="Email" readonly>
+                    <input type="text" class="form-control rounded-left" name="slug" value="{{old('slug')}}"
+                        placeholder="Blog Slug" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control rounded-left" name="b_address"
-                        value="Address : {{$blogger->b_address}}" placeholder="Address" readonly>
+                    <input type="text" class="form-control rounded-left" name="description"
+                        value="{{old('description')}}" placeholder="Blog Description">
+                </div>
+
+                <div class="form-group">
+                    <input type="file" class="form-control" name="image" value="{{old('image')}}">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Post Blog!!</button>
                 </div>
             </div>
         </div>
     </form>
+
 </body>
 
 </html>
+
 @endsection

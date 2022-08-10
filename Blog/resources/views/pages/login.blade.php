@@ -64,7 +64,7 @@
 </head>
 
 <body>
-
+    @if(!Session::has('blogger'))
     <h2 style="text-align: center;">Login Form</h2>
 
     <form action="{{route('login')}}" method="post" class="login-form">
@@ -106,9 +106,12 @@
             </div>
         </div>
     </form>
-
+    @else
+    <script>
+    window.location = "/dashboard";
+    </script>
+    @endif
 </body>
 
 </html>
-
 @endsection
