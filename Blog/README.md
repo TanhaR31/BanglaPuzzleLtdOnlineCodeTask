@@ -1,4 +1,7 @@
-Existing Users
+# BanglaPuzzleLtdOnlineCodeTask
+Heroku Live Server : http://thawing-atoll-11888.herokuapp.com/
+
+Use below email and passwords to login, crud blogs & comment
 
 email : billgates@gmail.com
 pass  : Aa!12
