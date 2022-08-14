@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('bloggers', function (Blueprint $table) {
             $table->id();
+            $table->string('b_name');
+            $table->integer('b_phone')->unique();
+            $table->string('b_email')->unique();
+            $table->string('b_password');
+            $table->string('b_address');
+            $table->string('b_image');
             $table->timestamps();
         });
     }

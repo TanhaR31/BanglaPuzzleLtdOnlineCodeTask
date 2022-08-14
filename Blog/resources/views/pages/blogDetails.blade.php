@@ -261,7 +261,7 @@
                                                     src="{{asset('images/log.png')}}" alt="" /></a>
                                             <div class="media-body">
                                                 <h4 class="media-heading">Blogger ID : {{$old->blogger_id}}</h4>
-                                                <p>{{$old->comment}}</p>
+                                                <p>{{$old->commnt}}</p>
                                                 <ul class="list-unstyled list-inline media-detail pull-left">
                                                     <li><i class="fa fa-calendar"></i>10/08/2022</li>
                                                 </ul>

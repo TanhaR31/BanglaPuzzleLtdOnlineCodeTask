@@ -34,6 +34,11 @@ img {
     height: 700px;
 }
 
+.image:hover {
+    opacity: 0.7;
+
+}
+
 .overlay {
     position: absolute;
     top: 0;
@@ -48,7 +53,7 @@ img {
 }
 
 .container:hover .overlay {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .text {
@@ -94,13 +99,14 @@ img {
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover,
 .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: darkorchid;
 }
 
 /* Number text (1/3 etc) */
 .numbertext {
+    background-color: black;
     font-weight: 700;
-    color: black;
+    color: white;
     font-size: 20px;
     padding: 8px 12px;
     position: absolute;

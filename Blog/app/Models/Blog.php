@@ -8,7 +8,7 @@ use App\Models\Blogger;
 
 class Blog extends Model
 {
-    public $timestamps = false;
+    // public $timestamps = false;
     protected $fillable = [
         'blogger_id', 'title', 'slug', 'description', 'image'
     ]; //user_id is named as blogger_id

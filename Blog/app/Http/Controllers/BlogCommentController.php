@@ -114,7 +114,7 @@ class BlogCommentController extends Controller
         $blogComment = new BlogComment();
         $blogComment->blog_id = $request->blog_id;
         $blogComment->blogger_id = $request->blogger_id;
-        $blogComment->comment = $request->comment;
+        $blogComment->commnt = $request->comment;
         $blogComment->save();
 
         return redirect()->back();
