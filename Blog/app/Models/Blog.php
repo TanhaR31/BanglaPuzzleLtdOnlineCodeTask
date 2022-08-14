@@ -14,7 +14,7 @@ class Blog extends Model
     ]; //user_id is named as blogger_id
     public function blogBelongsToBloggers()
     {
-        return $this->belongsTo(Blogger::class, 'blogger_id', 'id');  //user_id is named as blogger_id
+        return $this->belongsTo(Blogger::class, 'blogger_id', 'id'); //user_id is named as blogger_id
     }
     use HasFactory;
 }

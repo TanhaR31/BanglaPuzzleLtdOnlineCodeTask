@@ -14,7 +14,7 @@ class Blogger extends Model
     ];
     public function bloggerHasManyBlogs()
     {
-        return $this->hasMany(Blog::class, 'blogger_id', 'id'); //user_id is named as blogger_id
-    }
+        return $this->hasMany(Blog::class, 'blogger_id', 'id');
+    } //user_id is named as blogger_id
     use HasFactory;
 }
