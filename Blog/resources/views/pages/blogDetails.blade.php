@@ -201,42 +201,6 @@
                         </div>
                         <div class="article-content">
                             <p>{{$blog->description}}</p>
-                            <p>
-                                <!-- Eget aenean tellus venenatis. Donec odio tempus. Felis arcu
-                                pretium metus nullam quam aenean sociis quis sem neque vici
-                                libero. Venenatis nullam fringilla pretium magnis aliquam nunc
-                                vulputate integer augue ultricies cras. Eget viverra feugiat
-                                cras ut. Sit natoque montes tempus ligula eget vitae pede
-                                rhoncus maecenas consectetuer commodo condimentum aenean.
-                            </p>
-                            <h4>What are my payment options?</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                            <blockquote>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam.
-                                </p>
-                                <p class="blockquote-footer">
-                                    Someone famous in
-                                    <cite title="Source Title">Dick Grayson</cite>
-                                </p>
-                            </blockquote>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </p> -->
                         </div>
                         <div class="nav tag-cloud">
                             <a href="#">Design</a>

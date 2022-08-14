@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
 <style>
 body {
     margin: 0;
+    font-family: "Poppins", sans-serif;
 }
 
 * {
@@ -147,7 +150,7 @@ input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: darkmagenta;
+    background-color: darkorchid;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -158,6 +161,10 @@ button {
 
 button:hover {
     opacity: 0.8;
+}
+
+h1 {
+    color: darkorchid;
 }
 
 a {
@@ -180,7 +187,7 @@ a {
 }
 
 img.avatar {
-    width: 40%;
+    width: 30%;
     border-radius: 50%;
 }
 
@@ -248,6 +255,16 @@ span.psw {
     animation: animatezoom 0.6s
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
 @-webkit-keyframes animatezoom {
     from {
         -webkit-transform: scale(0)
@@ -269,7 +286,7 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+/* @media screen and (max-width: 300px) {
     span.psw {
         display: block;
         float: none;
@@ -278,83 +295,89 @@ span.psw {
     .cancelbtn {
         width: 100%;
     }
-}
+} */
 </style>
 
 <body>
-    <h2 style="text-align:center">Bangla Puzzle Blogs</h2>
-    @if(!Session::has('blogger'))
-    <!-- LOGIN MODAL START -->
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder">Welcome to Bangla Puzzle Blogs!</h1>
 
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login Modal</button>
+                @if(!Session::has('blogger'))
 
-    <div id="id01" class="modal">
+                <!-- LOGIN MODAL START -->
+                <button onclick="document.getElementById('id01').style.display='block'"
+                    style="width:auto; text-align:center;">Login
+                    Modal</button>
 
-        <form class="modal-content animate" action="{{route('login')}}" method="post">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                    title="Close Modal">&times;</span>
-                <img src="{{asset('images/log.png')}}" alt="Avatar" class="avatar">
-            </div>
+                <div id="id01" class="modal">
 
-            <div class="container">
-                {{@csrf_field()}}
-                @if(session()->has('message'))
-                <div class="alert alert-danger">
-                    {{ session()->get('message') }}
+                    <form class="modal-content animate" action="{{route('login')}}" method="post">
+                        <div class="imgcontainer">
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                                title="Close Modal">&times;</span>
+                            <img src="{{asset('images/log.png')}}" alt="Avatar" class="avatar">
+                        </div>
+
+                        <div class="container">
+                            {{@csrf_field()}}
+                            @if(session()->has('message'))
+                            <div class="alert alert-danger">
+                                {{ session()->get('message') }}
+                            </div>
+                            @endif
+                            <!-- Email -->
+                            <input type="text" name="email" placeholder="Enter Email Address" <?php if (isset($_COOKIE['remember'])) {
+                                                                                                    echo $_COOKIE['remember'];
+                                                                                                } ?> value="<?php if (isset($_COOKIE['remember'])) {
+                                                                                                                echo $_COOKIE['remember'];
+                                                                                                            } ?>"
+                                required>
+                            <!-- Password -->
+                            <input type="password" placeholder="Enter Your Password" name="password" required>
+                            <!-- CheckBox -->
+                            <div class="form-group">
+                                <label class="checkbox-primary btn btn-light rounded submit p-3 px-5">Remember Me
+                                    <input type="checkbox" name="remember">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <!-- Submit -->
+                            <button type="submit">Login</button>
+                            <!-- Registration -->
+                            <div class="form-group">
+                                <button type="submit" class="">
+                                    <a href="{{route('registration')}}">Don't Have Account? Click here</a></button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                @else
+                <div class="">
+                    <button type="submit" class="" style="width: 30%;">
+                        <a href="{{route('dashboard')}}">Dashboard</a></button>
                 </div>
                 @endif
-                <!-- Email -->
-                <label for="email"><b>Email Address</b></label>
-                <input type="text" name="email" placeholder="Enter Email Address" <?php if (isset($_COOKIE['remember'])) {
-                                                                                        echo $_COOKIE['remember'];
-                                                                                    } ?> value="<?php if (isset($_COOKIE['remember'])) {
-                                                                                                    echo $_COOKIE['remember'];
-                                                                                                } ?>" required>
-                <!-- Password -->
-                <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Your Password" name="password" required>
-                <!-- CheckBox -->
-                <div class="form-group">
-                    <label class="checkbox-primary btn btn-light rounded submit p-3 px-5">Remember Me
-                        <input type="checkbox" name="remember">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-                <!-- Submit -->
-                <button type="submit">Login</button>
-                <!-- Registration -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-light rounded submit p-3">
-                        <a href="{{route('registration')}}">Don't Have Account? Click here</a></button>
-                </div>
+
+                <script>
+                // Get the modal
+                var modal = document.getElementById('id01');
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+                </script>
+                <!-- LOGIN MODAL END -->
             </div>
-
-            <!-- <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                    class="cancelbtn">Cancel</button>
-            </div> -->
-        </form>
-
-    </div>
-
-    <script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    </script>
-    <!-- LOGIN MODAL END -->
-    @else
-    <div class="">
-        <button type="submit" class="btn btn-light rounded submit p-3">
-            <a href="{{route('dashboard')}}">Dashboard</a></button>
-    </div>
+        </div>
+    </header>
+    @if(Session::has('blogger'))
+    <div class="container"><button>Now hover on the images to comment !</button></div>
     @endif
     <!-- SWIPER START -->
     <div class="container">
@@ -416,32 +439,13 @@ span.psw {
 
     <!-- <button type="submit"><a href="{{route('login')}}">Click Here To Login</a>
     </button> -->
+    <br>
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright © Your Website 2022</p>
+        </div>
+    </footer>
 </body>
-<!-- <table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <th>Blogger Id</th>
-        <th>Title</th>
-        <th>Slug</th>
-        <th>Description</th>
-        <th>Image</th>
-    </tr>
-    @foreach($blogs as $blog)
-    <tr>
-        <td><img src="{{asset('images/'.$blog->image)}}" alt="Blog Picture" width="45" height="40">
-        </td>
-        <td>{{$blog->id}}</td>
-        <td>{{$blog->blogger_id}}</td>
-        <td>{{$blog->title}}</td>
-        <td>{{$blog->slug}}</td>
-        <td>{{$blog->description}}</td>
-        <td><a href="/blogEdit/{{$blog->id}}/{{$blog->slug}}" class="btn btn-info">Edit</a>
-        </td>
-        <td><a href="/blogDelete/{{$blog->id}}/{{$blog->slug}}" class="btn btn-Danger">Delete</a>
-        </td>
-    </tr>
-    @endforeach
-</table> -->
 
 </html>
 </section>

@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
 
+
     <style>
     button {
         background-color: darkorchid;
@@ -54,31 +55,35 @@
             <!-- Blog entries-->
             <div class="col-lg-8">
                 <!-- Nested row for non-featured blog posts-->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <!-- Blog post-->
-                        @foreach($blogs as $blog)
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top" src="{{asset('images/'.$blog->image)}}"
-                                    alt="..." /></a>
-                            <div class="card-body">
-                                <div class="small text-muted">Blog-ID : {{$blog->id}}</div>
-                                <h2 class="card-title h4">Title : {{$blog->title}}</h2>
-                                <p class="card-text">{{$blog->description}}</p>
-                                <button type="submit" class="">
-                                    <a href="/blogComment/{{$blog->id}}">Details →</a></button>
-                                <button type="submit" class="">
-                                    <a href="/blogEdit/{{$blog->id}}/{{$blog->slug}}">Edit →</a></button>
-                                <button type="submit" class="">
-                                    <a href="/blogDelete/{{$blog->id}}/{{$blog->slug}}">Delete →</a></button>
-                            </div>
-                        </div>
-                        @endforeach
+                @foreach($blogs as $blog)
+                <div class="card mb-4">
+                    <a href="#!"><img class="card-img-top" src="{{asset('images/'.$blog->image)}}" alt="..." /></a>
+                    <div class="card-body">
+                        <div class="small text-muted">Blog-ID : {{$blog->id}}</div>
+                        <h2 class="card-title h4">Title : {{$blog->title}}</h2>
+                        <p class="card-text">{{$blog->description}}</p>
+                        <button type="submit" class="">
+                            <a href="/blogComment/{{$blog->id}}">Details →</a></button>
+                        <button type="submit" class="">
+                            <a href="/blogEdit/{{$blog->id}}/{{$blog->slug}}">Edit →</a></button>
+                        <button type="submit" class="">
+                            <a href="/blogDelete/{{$blog->id}}/{{$blog->slug}}">Delete →</a></button>
                     </div>
                 </div>
+                @endforeach
             </div>
             <!-- Side widgets-->
             <div class="col-lg-4">
+                <!-- Author -->
+                <div class="card mb-4">
+                    <div class="card-header">Author</div>
+                    <div class="card-body">
+                        <div class="">
+                            <img src="{{asset('images/'.$blogger->b_image)}}" />
+                            <strong>{{$blogger->b_name}}</strong>
+                        </div>
+                    </div>
+                </div>
                 <!-- Search widget-->
                 <div class="card mb-4">
                     <div class="card-header">Search</div>
@@ -89,28 +94,6 @@
                             <button class="btn btn-primary" id="button-search" type="button">
                                 Go!
                             </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Categories widget-->
-                <div class="card mb-4">
-                    <div class="card-header">Categories</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">Web Design</a></li>
-                                    <li><a href="#!">HTML</a></li>
-                                    <li><a href="#!">Freebies</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">JavaScript</a></li>
-                                    <li><a href="#!">CSS</a></li>
-                                    <li><a href="#!">Tutorials</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>

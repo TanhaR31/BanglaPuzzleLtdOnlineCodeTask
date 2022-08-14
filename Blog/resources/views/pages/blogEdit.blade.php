@@ -21,13 +21,24 @@
     }
 
     button {
-        background-color: #04AA6D;
+        background-color: darkorchid;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;
         border: none;
         cursor: pointer;
         width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: white;
+        opacity: 0.5;
     }
 
     button:hover {
@@ -40,7 +51,7 @@
     }
 
     img.avatar {
-        width: 20%;
+        width: 100%;
         border-radius: 50%;
     }
 
@@ -104,7 +115,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Edit
+                    <button type="submit" class="">Edit
                         Blog</button>
                 </div>
     </form>

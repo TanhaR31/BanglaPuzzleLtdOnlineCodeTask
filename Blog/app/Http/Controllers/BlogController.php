@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Blogger;
 use App\Models\BlogComment;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
@@ -97,7 +98,8 @@ class BlogController extends Controller
     {
         $id = session()->get('blogger');
         $blogs = Blog::where('blogger_id', $id)->get();
-        return view('pages.allBlog')->with('blogs', $blogs);
+        $blogger = Blogger::where('id', $id)->first();
+        return view('pages.allBlog')->with('blogs', $blogs)->with('blogger', $blogger);
     }
 
     public function blogDetails()

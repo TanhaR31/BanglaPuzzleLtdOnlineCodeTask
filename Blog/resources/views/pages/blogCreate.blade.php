@@ -22,7 +22,7 @@
     }
 
     button {
-        background-color: #04AA6D;
+        background-color: darkorchid;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;
@@ -34,6 +34,12 @@
     a {
         text-decoration: none;
         color: white;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: white;
+        opacity: 0.5;
     }
 
     button:hover {

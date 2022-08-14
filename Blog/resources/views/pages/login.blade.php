@@ -1,4 +1,4 @@
-@extends('layouts.nonav')
+@extends('layouts.app')
 @section('content')
 <!DOCTYPE html>
 <html>
@@ -53,6 +53,12 @@
         padding-top: 16px;
     }
 
+    a:hover {
+        text-decoration: none;
+        color: white;
+        opacity: 0.5;
+    }
+
     /* Change styles for span and cancel button on extra small screens */
     @media screen and (max-width: 300px) {
         span.psw {
@@ -101,7 +107,7 @@
             <button type="submit">Login</button>
             <!-- Registration -->
             <div class="">
-                <button type="submit" class="btn btn-light rounded submit p-3">
+                <button type="submit" class="">
                     <a href="{{route('registration')}}">Don't Have Account? Click here</a></button>
             </div>
         </div>

@@ -9,7 +9,7 @@
     }
 
     button {
-        background-color: darkmagenta;
+        background-color: darkorchid;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;
@@ -87,7 +87,7 @@
             <a href="{{route('allBlog')}}" class="nav-item nav-link">My Blogs</a>
             <a href="{{route('dashboard')}}" class="nav-item nav-link">{{Session::get('bloggername')}}</a>
             <div class="">
-                <button type="submit" class="">
+                <button type="submit" class="" style="background-color: red">
                     <a href="{{route('logout')}}">LogOut</a></button>
             </div>
         </div>

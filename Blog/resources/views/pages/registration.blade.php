@@ -36,6 +36,12 @@
         color: white;
     }
 
+    a:hover {
+        text-decoration: none;
+        color: white;
+        opacity: 0.5;
+    }
+
     button:hover {
         opacity: 0.8;
     }
@@ -70,6 +76,7 @@
 </head>
 
 <body>
+    @if(!Session::has('blogger'))
     <h2 style="text-align: center;">Registration Form</h2>
 
     <form action="{{route('registration')}}" method="post" enctype="multipart/form-data">
@@ -86,7 +93,7 @@
         <div class="container">
             <div class="row ">
                 <div class="form-group">
-                    <br>Blogger ID<input type="text" class="form-control rounded-left" name="id" value="{{$data}}"
+                    <br>New Blogger ID<input type="text" class="form-control rounded-left" name="id" value="{{$data}}"
                         placeholder="ID" readonly>
                 </div>
 
@@ -156,6 +163,11 @@
             </div>
         </div>
     </form>
+    @else
+    <script>
+    window.location = "/dashboard";
+    </script>
+    @endif
 
 </body>
 
