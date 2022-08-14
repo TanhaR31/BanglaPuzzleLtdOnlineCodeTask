@@ -360,7 +360,7 @@ span.psw {
     <div class="container">
         @foreach($blogs as $blog)
         <div class="mySlides">
-            <div class="numbertext"><span>{{$blog->title}}</span></div>
+            <div class="numbertext"><span>{{$blog->title}} by Blogger-{{$blog->blogger_id}}</span></div>
             <img src="{{asset('images/'.$blog->image)}}" class="image">
             <div class="overlay">
                 <div class="text">{{$blog->description}}
